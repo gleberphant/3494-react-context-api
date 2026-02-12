@@ -6,8 +6,13 @@ import CampoTexto from "@/components/CampoTexto";
 import Botao from "@/components/Botao";
 
 import { useLocation } from "react-router-dom";
+import { useCarrinhoContext } from "../../hooks/useCarrinhoContext";
 
-const BarraNavegacao = ({ quantidadeProdutos }) => {
+const BarraNavegacao = () => {
+  const {
+    quantidadeProdutos
+  } = useCarrinhoContext()
+
   const location = useLocation();
   const ehAPaginaCarrinho = location.pathname === "/carrinho";
   return (
@@ -34,9 +39,8 @@ const BarraNavegacao = ({ quantidadeProdutos }) => {
               <Botao type="submit">Pesquisar</Botao>
             </form>
             <BotaoCarrinho
-              className={`d-none d-md-block ${
-                ehAPaginaCarrinho && "d-md-none"
-              }`}
+              className={`d-none d-md-block ${ehAPaginaCarrinho && "d-md-none"
+                }`}
               quantidadeProdutos={quantidadeProdutos}
             />
           </div>

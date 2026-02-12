@@ -5,20 +5,20 @@ import Carrinho from "./pages/Carrinho";
 import PaginaErro from "./pages/PaginaErro";
 
 import "./App.css";
-import { CarrinhoContext } from "./context/CarrinhoContext";
+import CarrinhoContextProvider from "./context/CarrinhoContext";
 
 function App() {
-  const [carrinho, setCarrinho] = useState([])
+ 
 
   return (
     <BrowserRouter>
-      <CarrinhoContext.Provider value={{ carrinho, setCarrinho }}>
+      <CarrinhoContextProvider>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/carrinho" element={<Carrinho />} />
           <Route path="*" element={<PaginaErro />} />
         </Routes>
-      </CarrinhoContext.Provider>
+      </CarrinhoContextProvider>
     </BrowserRouter>
   );
 }
